@@ -23,12 +23,8 @@ def download_nltk_packages():
 
 @cli.command()
 def init_scraping():
-    reviews_list_by_page = scraper.request_url()
-
-    reviews = (items for pages in reviews_list_by_page for items in pages)
-    recommended_reviews = processor.remove_not_recommended_reviews(reviews)
-    processed_reviews = processor.preprocess_nlp(recommended_reviews)
-    top_reviews = processor.sort_top_three_reviews(processed_reviews)
+    reviews_by_page = scraper.request_url()
+    top_reviews = processor.process_reviews(reviews_by_page)
     show_top_reviews(top_reviews)
 
 
