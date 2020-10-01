@@ -1,8 +1,5 @@
 import logging
-import numpy
-import pandas
 import requests
-from tqdm import tqdm
 from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
