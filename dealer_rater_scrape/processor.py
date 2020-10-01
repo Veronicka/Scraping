@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 # Stop Words are small words that can be ignored during language processing
 # without changing the meaning of the sentence.
-STOP_WORDS = list(set(stopwords.words("english")))
+IGNORED_WORDS = list(set(stopwords.words("english")))
 
 MINIMUM_STARS = 5
 
@@ -43,6 +43,13 @@ COMPLIMENTS = [
 ]
 
 
+def process_reviews(reviews_by_page):
+    reviews = (page for pages in reviews_by_page for page in pages)
+    recommended_reviews = remove_not_recommended_reviews(reviews)
+    processed_reviews = preprocess_nlp(recommended_reviews)
+    return sort_top_three_reviews(processed_reviews)
+
+
 def remove_not_recommended_reviews(reviews):
     logger.info("Removing not recommended reviews ...")
     good_reviews = []
@@ -67,8 +74,8 @@ def preprocess_nlp(list_reviews):
     reviews = []
     for review in list_reviews:
         tokenized = generate_token(review)
-        stopped = remove_stop_words(tokenized)
-        number_of_compliments = count_compliments(stopped)
+        accepted_words = remove_ignored_words(tokenized)
+        number_of_compliments = count_compliments(accepted_words)
         reviews.append((review, number_of_compliments))
     return reviews
 
@@ -77,12 +84,12 @@ def generate_token(review):
     return word_tokenize(re.sub(r"[^(a-zA-Z)\s]", "", review["text"]))
 
 
-def remove_stop_words(tokenized):
-    return [w for w in tokenized if not w in STOP_WORDS]
+def remove_ignored_words(tokenized):
+    return [w for w in tokenized if not w in IGNORED_WORDS]
 
 
-def count_compliments(stopped):
-    compliments = [word for word in COMPLIMENTS if word in stopped]
+def count_compliments(accepted_words):
+    compliments = [word for word in COMPLIMENTS if word in accepted_words]
     return len(compliments)
 
 
