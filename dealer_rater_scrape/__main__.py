@@ -1,5 +1,6 @@
 import click
 import nltk
+import itertools
 
 from . import scrape
 from . import process
@@ -21,7 +22,7 @@ def download_nltk_packages():
 
 
 @cli.command()
-def scraping():
+def init_scraping():
     reviews_list_by_page = scrape.request_url(settings.URL_DEALER_RATER, pages=5)
 
     reviews = (items for pages in reviews_list_by_page for items in pages)
@@ -29,9 +30,12 @@ def scraping():
     reviews = process.preprocess_nlp(reviews)
     reviews = process.sort_reviews(reviews)
 
+    count = itertools.count(start=1)
     for review, _ in reviews:
+        click.secho("\n***** REVIEW %d *****\n" % next(count))
         click.secho("Username: %s" % review["username"], fg="green")
         click.secho("Review: %s" % review["text"], fg="green")
+        click.secho("\nServices:", fg="green")
         for service, stars in review["services"].items():
             click.secho("%s stars %s" % (service, stars), fg="green")
 
