@@ -68,15 +68,15 @@ def test_generate_token(fake_five_stars_reviews):
     ]
 
 
-def test_remove_stop_words(fake_tokenized_words):
-    stopped = processor.remove_stop_words(fake_tokenized_words)
+def test_remove_ignored_words(fake_tokenized_words):
+    accepted = processor.remove_ignored_words(fake_tokenized_words)
 
-    assert len(stopped) == 3
-    assert stopped == ["The", "car", "best"]
+    assert len(accepted) == 3
+    assert accepted == ["The", "car", "best"]
 
 
-def test_count_compliments(fake_stopped_words):
-    compliments = processor.count_compliments(fake_stopped_words)
+def test_count_compliments(fake_accepted_words):
+    compliments = processor.count_compliments(fake_accepted_words)
 
-    assert len(fake_stopped_words) == 7
+    assert len(fake_accepted_words) == 7
     assert compliments == 4

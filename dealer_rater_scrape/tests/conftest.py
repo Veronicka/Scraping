@@ -256,5 +256,5 @@ def fake_tokenized_words():
 
 
 @pytest.fixture
-def fake_stopped_words():
+def fake_accepted_words():
     return ["car", "beautiful", "best", "good", "fast", "cool", "blue"]
