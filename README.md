@@ -23,9 +23,10 @@ For example:
 
 Python 3.8 is required.
 
-Install the pipfile https://pypi.org/project/pipenv/
+Install the pipfile https://github.com/pypa/pipenv
 ```
-$ pip install pipenv
+$ sudo apt update
+$ sudo apt install pipenv
 ```
 
 Install project dependencies:
