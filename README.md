@@ -2,22 +2,20 @@
 
 This project scrapes the first five pages of DealerRater.com and chooses the top three reviews by a criterion.
 
-It could be done with machine learning, but it would need a much larger number of reviews.
-
-The criterion used was to count the `MY_KEY` words (list of keywords) found in each review. The review that contains the highest number of keywords is the first place in hanking, the second with the highest number of words is the second place and the third place is the third largest with keywords.
+The criterion used was to count the `COMPLIMENTS` words found in each review. The review that contains the highest number of keywords is ranked first, so on and so forth until the third review. If there is a tie, the first review found comes first in the classification.
 
 For example:
 
-`MY_KEYS` = [**good**, **beauty**, **fast**]
+`COMPLIMENTS` = [**good**, **beautiful**, **fast**]
 
-1º - I like the car. It's **good**, **beauty** and **fast**.
+1º - I like the car. It's **good**, **beautiful** and **fast**.
 
-2º - I like the car. It's ***good** and **fast**.
+2º - I like the car. It's **good** and **fast**.
 
 3º - I like the car. It's **fast**.
 
 
-`MY_KEYS` is a list of keywords, this list can be attached or create a new one.
+`COMPLIMENTS` is a list of keywords. New words can be inserted on the list through the code.
 
 ### Installation
 
@@ -67,10 +65,20 @@ Running scraping:
 $ python -m dealer_rater_scrape init-scraping
 ```
 
-The result is the three most “overly positive” endorsements. Each review contains the dictionary:
- - **username**: username review person
- - **text**: review
- - **services**: dictionary services name and stars
+The scraping returns the three most “overly positive” endorsements. Each review contains the map:
+```
+Username: user0
+Review: the body of review
+
+Ratings:
+CUSTOMER SERVICE 5,
+QUALITY OF WORK 5,
+FRIENDLINESS 5,
+PRICING 5,
+OVERALL EXPERIENCE 5,
+RECOMMEND DEALER	"YES"    
+
+```
 
 ## Tests
 
