@@ -17,7 +17,7 @@ def test_preprocess_nlp(fake_five_stars_reviews):
     reviews = process.preprocess_nlp(fake_five_stars_reviews)
     assert list(reviews[0][0].keys()) == ["username", "title", "text", "services"]
     assert reviews[0][1] == 1
-    assert reviews[1][1] == 2
+    assert reviews[1][1] == 3
     assert reviews[2][1] == 4
 
 
