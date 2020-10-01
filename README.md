@@ -12,6 +12,11 @@ MY_KEYS = ['good', 'beauty', 'fast']
 
 1º - I like the car. It's 'good', 'beauty' and fast.
 
-2º - I like the car. It's 'good' and 'beauty'.
+2º - I like the car. It's 'good' and 'fast'.
 
-3º - I like the car. It's 'good' and 'fast'.
+3º - I like the car. It's 'fast'.
+
+
+MY_KEYS is a list of keywords, this list can be attached or create a new one.
+
+## How use
