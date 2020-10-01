@@ -7,8 +7,6 @@ verify_ssl = true
 
 [packages]
 jupyterlab = "*"
-numpy = "*"
-pandas = "*"
 nltk = "*"
 beautifulsoup4 = "*"
 click = "*"
