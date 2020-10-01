@@ -8,7 +8,7 @@ def fake_list_reviews():
             "username": "- user01",
             "title": '"user01"',
             "text": "test test test",
-            "services": {
+            "ratings": {
                 "Customer Service": 5,
                 "Quality of Work": 5,
                 "Friendliness": 5,
@@ -21,7 +21,7 @@ def fake_list_reviews():
             "username": "- user02",
             "title": '"user02"',
             "text": "test test test",
-            "services": {
+            "ratings": {
                 "Customer Service": 5,
                 "Quality of Work": 5,
                 "Friendliness": 5,
@@ -34,7 +34,7 @@ def fake_list_reviews():
             "username": "- user03",
             "title": '"user03"',
             "text": "test test test",
-            "services": {
+            "ratings": {
                 "Customer Service": 5,
                 "Quality of Work": 4,
                 "Friendliness": 5,
@@ -53,7 +53,7 @@ def fake_five_stars_reviews():
             "username": "- user01",
             "title": '"user01"',
             "text": "I think the car is good.",
-            "services": {
+            "ratings": {
                 "Customer Service": 5,
                 "Quality of Work": 5,
                 "Friendliness": 5,
@@ -66,7 +66,7 @@ def fake_five_stars_reviews():
             "username": "- user02",
             "title": '"user02"',
             "text": "It's the best car I've ever had, super fast and very good.",
-            "services": {
+            "ratings": {
                 "Customer Service": 5,
                 "Quality of Work": 5,
                 "Friendliness": 5,
@@ -83,7 +83,7 @@ def fake_five_stars_reviews():
                 "beautiful, it is simply the best car I have ever had. The sellers "
                 "were attentive and friendly."
             ),
-            "services": {
+            "ratings": {
                 "Customer Service": 5,
                 "Quality of Work": 5,
                 "Friendliness": 5,
@@ -103,7 +103,7 @@ def fake_reviews_with_adjectives():
                 "username": "- user01",
                 "title": '"user01"',
                 "text": "I think the car is good.",
-                "services": {
+                "ratings": {
                     "Customer Service": 5,
                     "Quality of Work": 5,
                     "Friendliness": 5,
@@ -119,7 +119,7 @@ def fake_reviews_with_adjectives():
                 "username": "- user02",
                 "title": '"user02"',
                 "text": "It's the best car I've ever had, super fast and very good.",
-                "services": {
+                "ratings": {
                     "Customer Service": 5,
                     "Quality of Work": 5,
                     "Friendliness": 5,
@@ -139,7 +139,7 @@ def fake_reviews_with_adjectives():
                     "beautiful, it is simply the best car I have ever had. The sellers "
                     "were attentive and friendly."
                 ),
-                "services": {
+                "ratings": {
                     "Customer Service": 5,
                     "Quality of Work": 5,
                     "Friendliness": 5,
@@ -158,7 +158,7 @@ def fake_reviews_with_adjectives():
                     "The car is really good, I am satisfied with my purchase. "
                     "Everything is perfect."
                 ),
-                "services": {
+                "ratings": {
                     "Customer Service": 5,
                     "Quality of Work": 5,
                     "Friendliness": 5,
@@ -170,3 +170,13 @@ def fake_reviews_with_adjectives():
             3,
         ),
     ]
+
+
+@pytest.fixture
+def fake_tokenized_words():
+    return ["The", "car", "is", "the", "best"]
+
+
+@pytest.fixture
+def fake_stopped_words():
+    return ["car", "beautiful", "best", "good", "fast", "cool", "blue"]
