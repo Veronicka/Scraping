@@ -3,7 +3,7 @@ import pytest
 import requests
 import codecs
 from mock import patch, Mock
-from dealer_rater_scrape import scrape
+from dealer_rater_scrape import scraper
 
 
 def test_scraping_response(requests_mock):
@@ -14,11 +14,11 @@ def test_scraping_response(requests_mock):
         )
 
     response = requests.get("http://test.com")
-    result = scrape.scraping_response(response)
+    result = scraper.scraping_response(response)
 
     assert len(result) == 10
     assert type(result) == list
-    assert list(result[0].keys()) == ["username", "title", "text", "services"]
+    assert list(result[0].keys()) == ["username", "title", "text", "ratings"]
     assert result[0]["username"] == "- Maria"
     assert result[1]["username"] == "- Joana"
 
@@ -29,11 +29,12 @@ def test_request_url(mock_get):
         mock_get.return_value.ok = True
         mock_get.return_value.text = html.read()
 
-    result = scrape.request_url("http://test.com", pages=1)
+    result = scraper.request_url()
 
-    assert len(result) == 1
+    assert len(result) == 5
     assert len(result[0]) == 10
     assert type(result) == list
-    assert list(result[0][0].keys()) == ["username", "title", "text", "services"]
+    assert list(result[0][0].keys()) == ["username", "title", "text", "ratings"]
     assert result[0][0]["username"] == "- Maria"
     assert result[0][1]["username"] == "- Joana"
+    assert result[0][-1]["username"] == "- Amanda"
