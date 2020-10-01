@@ -10,7 +10,7 @@ For example:
 
 `MY_KEYS` = [**good**, **beauty**, **fast**]
 
-1º - I like the car. It's **good**, **beauty** and ***fast**.
+1º - I like the car. It's **good**, **beauty** and **fast**.
 
 2º - I like the car. It's ***good** and **fast**.
 
