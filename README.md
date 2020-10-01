@@ -21,8 +21,6 @@ For example:
 
 ### Installation
 
-Python 3.8 is required.
-
 Install the pipfile https://github.com/pypa/pipenv
 ```
 $ sudo apt update
