@@ -21,10 +21,17 @@ def test_preprocess_nlp(fake_five_stars_reviews):
     assert reviews[2][1] == 5
 
 
-def test_sort_reviews(fake_reviews_with_adjectives):
-    reviews = processor.sort_top_three_reviews(fake_reviews_with_adjectives)
+def test_sort_top_three_reviews(fake_reviews_with_compliments):
+    reviews = processor.sort_top_three_reviews(fake_reviews_with_compliments)
     assert reviews[0][0]["username"] == "- user03"
     assert reviews[1][0]["username"] == "- user04"
+    assert reviews[2][0]["username"] == "- user02"
+
+
+def test_sort_reviews_tie(fake_reviews_with_compliments_tied):
+    reviews = processor.sort_top_three_reviews(fake_reviews_with_compliments_tied)
+    assert reviews[0][0]["username"] == "- user01"
+    assert reviews[1][0]["username"] == "- user03"
     assert reviews[2][0]["username"] == "- user02"
 
 
