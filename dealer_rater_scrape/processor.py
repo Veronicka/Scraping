@@ -61,8 +61,6 @@ def remove_not_recommended_reviews(reviews):
 
 
 def remove_low_stars_ratings(ratings):
-    logger.info("Removing low stars reviews ...")
-
     for service, stars in ratings.items():
         if isinstance(stars, int) and stars < MINIMUM_STARS:
             return False
