@@ -51,7 +51,7 @@ def process_reviews(reviews_by_page):
 
 
 def remove_not_recommended_reviews(reviews):
-    logger.info("Removing not recommended reviews ...")
+    logger.info("Removing not recommended and low stars reviews ...")
     good_reviews = []
     for review in reviews:
         if "Yes" in review["ratings"]["Recommend Dealer"]:
